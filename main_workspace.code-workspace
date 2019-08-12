@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"name": "Matrix",
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/.git": true
+		}
+	},
+	"extensions": {
+
+	},
+	"launch": {
+		"configurations": [
+			
+		],
+		"compounds": [
+
+		]
+	},
+	"remoteAuthority": ""
+}
