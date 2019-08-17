@@ -1,19 +1,19 @@
 #include "Matrix.h"
 
 // Initialize a Matrix of m x n with a single numerical value.
-Matrix::Matrix(unsigned m_rowSize, unsigned colSize, double init) {
+Matrix::Matrix(unsigned m_rowSize, unsigned m_colSize, double data) {
     m_rowSize = m_rowSize;
-    m_colSize = colSize;
+    m_colSize = m_colSize;
 
     m_matrix.resize(m_rowSize);
     for (unsigned i = 0; i < m_matrix.size(); i++)
     {
-        m_matrix[i].resize(colSize, init);
+        m_matrix[i].resize(m_colSize, data);
     }
 }
 
 // Initialize a Matrix from a nested array.
-Matrix::Matrix(double** n_array) {
+Matrix::Matrix(double** n_matrix) {
     ;
 }
 
@@ -48,13 +48,13 @@ Matrix Matrix::operator-(Matrix& n_matrix) {
 /*
 // Operator to allow for multiplication of Matrix objects like M*N.
 Matrix Matrix::operator*(Matrix& n_matrix) {
-    Matrix product(m_rowSize, n_matrix.colSize(), 0.0);
+    Matrix product(m_rowSize, n_matrix.m_colSize(), 0.0);
     
     if (m_colSize == n_matrix.rowSize())
     {
         double tmp = 0.0;
         for (unsigned i = 0; i < m_rowSize; i++) {
-            for (unsigned j = 0; j < n_matrix.colSize(); j++) {
+            for (unsigned j = 0; j < n_matrix.m_colSize(); j++) {
                 tmp = 0.0;
                 for (unsigned k = 0; k < m_rowSize; k++) {
                     tmp += m_matrix[i][k] * n_matrix(k, j);
@@ -123,7 +123,7 @@ double& Matrix::operator()(const unsigned& row, const unsigned& col)
 
 // A function to return an array with the size of column and the row like this (row, col).
 unsigned Matrix::shape() const {
-    return this->rowSize(), this->colSize();
+    return this->rowSize(), this->m_colSize();
 }
 
 // Function to return row size.
@@ -132,7 +132,7 @@ unsigned Matrix::rowSize() const {
 }
 
 // Function to return column size.
-unsigned Matrix::colSize() const {
+unsigned Matrix::m_colSize() const {
     return this->m_colSize;
 }
 

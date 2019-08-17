@@ -1,33 +1,41 @@
+#include <vector>
 #include <string>
 #include <fstream>
 #include <iostream>
 #include <limits>
 #include <stdint.h>
 
-class FOO
-{
-public:
-    FOO(/* args */);
-    ~FOO();
-
-    FOO& get_copy_as_reference()
-    {
-        return *this;
-    }
-};
-
+#include "src/MatrixTemplate.h"
 
 int main(int argc, char** argv) {
-    std::cout << "int64_t size is: " << sizeof(int64_t) << ". " <<
-        "Minimal value: " << std::numeric_limits<int64_t>::min() << ". " <<
-        "Maximum value: " << std::numeric_limits<int64_t>::max() << ". " << std::endl;
+    int size = 2;
+    int value = 1;
 
-    std::cout << "uint64_t size is: " << sizeof(uint64_t) << ". " <<
-        "Minimal value: " << std::numeric_limits<uint64_t>::min() << ". " <<
-        "Maximum value: " << std::numeric_limits<uint64_t>::max() << ". " << std::endl;
+    Matrix<int>A(size, size, value);
+    A.print();
 
+    Matrix<int>B(size, size, value + 3);
+    B.print();
 
+    std::vector<std::vector<int>> matrix_test({{2, 1}, {1, 0}});
 
-    system("pause");
+    Matrix<int>C(matrix_test);
+    C.print();
+
+    std::cout << C(1, 0) << std::endl;
+
+    Matrix<int>D = C;
+    C.print();
+
+    Matrix<int> E = C + D;
+    E.print();
+
+    Matrix<int> F = C - D;
+    F.print();
+
+    // std::cout << F.shape() << std::endl;
+
+    // Matrix<int> G = C * D;
+    // G.print();
 }
 

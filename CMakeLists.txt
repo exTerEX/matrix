@@ -16,13 +16,14 @@ set(LIBRARY_OUTPUT_PATH "/Matrix/")
 # Variables
 set(FilesToIncludeInMatrixExe
     "main.cpp"
-    "src/Matrix.h"
-    "src/Matrix.cpp"
+    "src/MatrixTemplate.h"
+    #"src/Matrix.cpp"
 )
-set(FilesToIncludeInMatrixLib
-    "src/Matrix.h"
-    "src/Matrix.cpp"
-)
+
+#set(FilesToIncludeInMatrixLib
+#    "src/Matrix.h"
+#    "src/Matrix.cpp"
+#)
 
 add_executable(Matrix ${FilesToIncludeInMatrixExe})
 # add_library(Matrix ${FilesToIncludeInMatrixLib})
