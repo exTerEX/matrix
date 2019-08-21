@@ -26,7 +26,7 @@ public:
     // Initialize a matrix from a nested vector.
     Matrix(std::vector<std::vector<T>>);
 
-    // Destructor
+    // Destructor<
     ~Matrix();
 
     // Access and iterators
