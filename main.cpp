@@ -8,21 +8,37 @@
 #include "src/MatrixTemplate.h"
 
 int main(int argc, char** argv) {
-    int size = 2;
-    int value = 1;
-
-    Matrix<int, unsigned>A(size, size);
+    // Interaction tests
+    Matrix<int, unsigned>A(3);
     A.print();
 
-    Matrix<int, unsigned>B(size, size, value);
+    Matrix<int, unsigned>B(3, 4);
     B.print();
 
-    std::vector<std::vector<int>> matrix_test({{2, 0, 1, 0}, {1, 2, 0, 4}});
-    Matrix<int, unsigned>C(matrix_test);
+    Matrix<int, unsigned>C(3, 4, 3);
     C.print();
 
-    std::vector<int> a({1, 2, 3, 4});
-    Matrix<int, unsigned> D(a);
+     Matrix<int, unsigned>D = B;
     D.print();
-}
 
+    Matrix<int, unsigned>E({1, 2, 3, 4});
+    E.print();
+
+    Matrix<int, unsigned> F({{2, 0, 1, 0}, {1, 2, 0, 4}});
+    F.print();
+
+    // Operator tests
+    std::cout << F(1, 2) << std::endl;
+
+    Matrix<int, unsigned>G(3, 4, 8);
+    G.print();
+
+    Matrix<int, unsigned>plus = G + C;
+    plus.print();
+
+    Matrix<int, unsigned>minus = G - C;
+    minus.print();
+
+    /*Matrix<int, unsigned>product = G*C;
+    product.print();*/
+}
