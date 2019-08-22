@@ -129,7 +129,7 @@ T& Matrix<T, V>::operator()(const V& row, const V& col) {
 //
 template<typename T, typename V>
 Matrix<T, V> Matrix<T, V>::operator+(const Matrix& n_matrix) {
-    Matrix product(m_colSize, m_rowSize, 0.0);
+    Matrix product(m_colSize, m_rowSize);
 
     for (V i = 0; i < m_rowSize; i++)
     {
@@ -143,7 +143,7 @@ Matrix<T, V> Matrix<T, V>::operator+(const Matrix& n_matrix) {
 
 template<typename T, typename V>
 Matrix<T, V> Matrix<T, V>::operator-(const Matrix& n_matrix) {
-    Matrix product(m_colSize, m_rowSize, 0.0);
+    Matrix product(m_colSize, m_rowSize);
 
     for (V i = 0; i < m_rowSize; i++)
     {
@@ -157,7 +157,7 @@ Matrix<T, V> Matrix<T, V>::operator-(const Matrix& n_matrix) {
 
 template<typename T, typename V>
 Matrix<T, V> Matrix<T, V>::operator*(const Matrix& n_matrix) {
-    Matrix product(m_rowSize, n_matrix.getColSize(), 0.0);
+    Matrix product(n_matrix.getColSize(), m_rowSize);
 
     if(m_colSize == n_matrix.getRowSize()) {
         T tmp = 0.0;
@@ -174,12 +174,14 @@ Matrix<T, V> Matrix<T, V>::operator*(const Matrix& n_matrix) {
             }
         }
         return product;
+    } else {
+        throw "Cannot multiply these matricies!";
     }
 }
 
 template<typename T, typename V>
 Matrix<T, V> Matrix<T, V>::transpose() {
-    Matrix product(m_colSize, m_rowSize, 0.0);
+    Matrix product(m_colSize, m_rowSize);
 
     for (V i = 0; i < m_colSize; i++)
     {
@@ -192,7 +194,17 @@ Matrix<T, V> Matrix<T, V>::transpose() {
 
 template<typename T, typename V>
 Matrix<T, V> Matrix<T, V>::inverse() {
-    ;
+    Matrix<T, V>product(m_rowSize, m_colSize);
+
+    if(m_colSize == n_matrix.getRowSize()) {
+        for (V i = 0; i < m_rowSize; i++) {
+            for (V j = 0; j < m_colSize; j++) {
+                product(i, j) = 0; //Some hard ass math shit that need to be implemented...
+            }
+        }
+    } else {
+        throw "Cannot find inverse of this matrix."
+    }
 }
 
 //
@@ -200,7 +212,7 @@ Matrix<T, V> Matrix<T, V>::inverse() {
 //
 template<typename T, typename V>
 Matrix<T, V> Matrix<T, V>::operator*(T scalar) {
-    Matrix product(m_rowSize, m_colSize, 0.0);
+    Matrix product(m_colSize, m_rowSize);
 
     for (V i = 0; i < m_rowSize; i++)
     {
