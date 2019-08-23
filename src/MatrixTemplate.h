@@ -37,7 +37,7 @@ public:
     Matrix operator-(const Matrix&);
     Matrix operator*(const Matrix&);
     Matrix transpose();
-    Matrix inverse();
+    Matrix inverse(const Matrix&);
 
     // Scalar operations
     Matrix operator*(T);
@@ -129,7 +129,7 @@ T& Matrix<T, V>::operator()(const V& row, const V& col) {
 //
 template<typename T, typename V>
 Matrix<T, V> Matrix<T, V>::operator+(const Matrix& n_matrix) {
-    Matrix product(m_colSize, m_rowSize);
+    Matrix product(m_rowSize, m_colSize);
 
     for (V i = 0; i < m_rowSize; i++)
     {
@@ -143,7 +143,7 @@ Matrix<T, V> Matrix<T, V>::operator+(const Matrix& n_matrix) {
 
 template<typename T, typename V>
 Matrix<T, V> Matrix<T, V>::operator-(const Matrix& n_matrix) {
-    Matrix product(m_colSize, m_rowSize);
+    Matrix product(m_rowSize, m_colSize);
 
     for (V i = 0; i < m_rowSize; i++)
     {
@@ -157,7 +157,7 @@ Matrix<T, V> Matrix<T, V>::operator-(const Matrix& n_matrix) {
 
 template<typename T, typename V>
 Matrix<T, V> Matrix<T, V>::operator*(const Matrix& n_matrix) {
-    Matrix product(n_matrix.getColSize(), m_rowSize);
+    Matrix product(m_rowSize, n_matrix.getColSize());
 
     if(m_colSize == n_matrix.getRowSize()) {
         T tmp = 0.0;
@@ -181,7 +181,7 @@ Matrix<T, V> Matrix<T, V>::operator*(const Matrix& n_matrix) {
 
 template<typename T, typename V>
 Matrix<T, V> Matrix<T, V>::transpose() {
-    Matrix product(m_colSize, m_rowSize);
+    Matrix product(m_rowSize, m_colSize);
 
     for (V i = 0; i < m_colSize; i++)
     {
@@ -193,7 +193,7 @@ Matrix<T, V> Matrix<T, V>::transpose() {
 }
 
 template<typename T, typename V>
-Matrix<T, V> Matrix<T, V>::inverse() {
+Matrix<T, V> Matrix<T, V>::inverse(const Matrix& n_matrix) {
     Matrix<T, V>product(m_rowSize, m_colSize);
 
     if(m_colSize == n_matrix.getRowSize()) {
@@ -203,7 +203,7 @@ Matrix<T, V> Matrix<T, V>::inverse() {
             }
         }
     } else {
-        throw "Cannot find inverse of this matrix."
+        throw "Cannot find inverse of this matrix.";
     }
 }
 
@@ -212,7 +212,7 @@ Matrix<T, V> Matrix<T, V>::inverse() {
 //
 template<typename T, typename V>
 Matrix<T, V> Matrix<T, V>::operator*(T scalar) {
-    Matrix product(m_colSize, m_rowSize);
+    Matrix product(m_rowSize, m_colSize);
 
     for (V i = 0; i < m_rowSize; i++)
     {
