@@ -16,8 +16,8 @@ set(LIBRARY_OUTPUT_PATH "/Matrix/")
 # Variables
 set(FilesToIncludeInMatrixExe
     "main.cpp"
-    "src/MatrixTemplate.h"
-    #"src/Matrix.cpp"
+    "src/Matrix.h"
+    "src/Matrix.cpp"
 )
 
 #set(FilesToIncludeInMatrixLib

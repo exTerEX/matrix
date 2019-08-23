@@ -1,49 +1,62 @@
-#include <cmath>
-#include <tuple>
 #include <vector>
 #include <iostream>
 
 #ifndef MATRIX_H
 #define MATRIX_H
 
-
-class Matrix
-{
+// T: Data type, V: Index integer type
+template<typename T, typename V = unsigned>
+class Matrix {
 public:
-    Matrix(unsigned, unsigned, double);
-    Matrix(double**);
+    // Initialize a square matrix with zero values.
+    Matrix(V);
+
+    // Initialize a m*n matrix with zero values.
+    Matrix(V, V);
+
+    // Initialize m*n matrix with a specific value.
+    Matrix(V, V, T);
+
+    // Copy constructor to make copies from a given class
     Matrix(const Matrix&);
+
+    // Initialize a matrix from a vector.
+    Matrix(std::vector<T>);
+
+    // Initialize a matrix from a nested vector.
+    Matrix(std::vector<std::vector<T>>);
+
+    // Destructor<
     ~Matrix();
 
+    // Access and iterators
+    T& operator()(const V&, const V&);
+
     // Matrix operations
-    Matrix operator+(Matrix&);
-    Matrix operator-(Matrix&);
-    Matrix operator*(Matrix&);
-    Matrix operator/(Matrix&);
+    Matrix operator+(const Matrix&);
+    Matrix operator-(const Matrix&);
+    Matrix operator*(const Matrix&);
     Matrix transpose();
+    Matrix inverse(const Matrix&);
 
     // Scalar operations
-    Matrix operator*(double);
-    Matrix operator/(double);
+    Matrix operator*(T);
+    Matrix operator/(T);
 
     // Aesthetic Methods
-    double& operator()(const unsigned&, const unsigned&);
-    unsigned shape() const;
-    unsigned rowSize() const;
-    unsigned colSize() const;
+    V shape() const; // must be implemented
     void print() const;
 
-    // Power iteration
-    std::tuple<Matrix, double, int> power_iteration(unsigned, double);
-
-    // Deflation
-    Matrix deflation(Matrix&, double&);
-
 protected:
+    V getRowSize() const;
+    V getColSize() const;
 
 private:
-    unsigned m_rowSize, m_colSize; // Make OS specific data type
-    std::vector<std::vector<double>> m_matrix;
+    V m_rowSize, m_colSize;
+    std::vector<std::vector<T>> m_matrix;
+
+    void fill(T);
+
 };
 
 #endif

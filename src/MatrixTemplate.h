@@ -1,11 +1,10 @@
-
 #include <vector>
 
 #ifndef MATRIX_H
 #define MATRIX_H
 
 // T: Data type, V: Index integer type
-template<typename T, typename V>
+template<typename T, typename V = unsigned>
 class Matrix {
 public:
     // Initialize a square matrix with zero values.
