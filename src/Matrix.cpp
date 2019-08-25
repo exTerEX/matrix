@@ -143,6 +143,7 @@ Matrix<T, V> Matrix<T, V>::inverse(const Matrix& n_matrix) {
     } else {
         throw "Cannot find inverse of this matrix.";
     }
+    return product;
 }
 
 //
@@ -202,3 +203,6 @@ void Matrix<T, V>::fill(T data) {
         m_matrix[i].resize(m_colSize, data);
     }
 }
+
+// Explicit template instantiation
+template class Matrix<int>;

@@ -6,7 +6,6 @@
 #include <stdint.h>
 
 #include "src/Matrix.h"
-#include "src/Matrix.cpp" // find a way to link without this!!!
 
 int main(int argc, char** argv) {
     Matrix<int> test_square_init(2);

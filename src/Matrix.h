@@ -8,25 +8,25 @@
 template<typename T, typename V = unsigned>
 class Matrix {
 public:
-    // Initialize a square matrix with zero values.
+    // Initialize a square matrix
     Matrix(V);
 
-    // Initialize a m*n matrix with zero values.
+    // Initialize a m*n matrix
     Matrix(V, V);
 
-    // Initialize m*n matrix with a specific value.
+    // Initialize m*n matrix with value.
     Matrix(V, V, T);
 
-    // Copy constructor to make copies from a given class
+    // Copy constructor
     Matrix(const Matrix&);
 
-    // Initialize a matrix from a vector.
+    // Initialize a matrix from vector.
     Matrix(std::vector<T>);
 
-    // Initialize a matrix from a nested vector.
+    // Initialize a matrix from nested vector.
     Matrix(std::vector<std::vector<T>>);
 
-    // Destructor<
+    // Destructor
     ~Matrix();
 
     // Access and iterators
@@ -36,15 +36,32 @@ public:
     Matrix operator+(const Matrix&);
     Matrix operator-(const Matrix&);
     Matrix operator*(const Matrix&);
+    Matrix operator^(const Matrix&); // ni
     Matrix transpose();
-    Matrix inverse(const Matrix&);
+
+    // Essential digital operators
+    void operator=(const Matrix&); // ni
+    void operator+=(const Matrix&); // ni
+    void operator-=(const Matrix&); // ni
+    void operator*=(const Matrix&); // ni
+
+    // Boolean operators
+    bool operator==(const Matrix&); // ni
+    bool operator!=(const Matrix&); // ni
+    bool operator<(const Matrix&); // ni
+    bool operator>(const Matrix&); // ni
+    bool operator<=(const Matrix&); // ni
+    bool operator>=(const Matrix&); // ni
 
     // Scalar operations
     Matrix operator*(T);
     Matrix operator/(T);
 
+    // Matrix functions
+    Matrix inverse(const Matrix&); // nfi
+
     // Aesthetic Methods
-    V shape() const; // must be implemented
+    V shape() const; // nfi
     void print() const;
 
 protected:
