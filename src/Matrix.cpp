@@ -117,20 +117,15 @@ Matrix<T, V> Matrix<T, V>::operator*(const Matrix& n_matrix) {
     }
 }
 
-/*template<typename T, typename V>
-Matrix Matrix<T, V>::operator^(T scalar) {
-    if (scalar < 0) { // if to trigger intvert operation
-        ;
-    } else {
-        ;
-    }
-    return Matrix(1, 1, 0.0);
+template<typename T, typename V>
+Matrix<T, V> Matrix<T, V>::operator^(T) {
+    return Matrix<T>(1, 1, 0.0);
 }
 
 template<typename T, typename V>
-Matrix Matrix<T, V>::operator^(char scalar) {
-    return Matrix(1, 1, 0.0);
-}*/
+Matrix<T, V> Matrix<T, V>::operator^(char scalar) {
+    return Matrix<T>(1, 1, 0.0);
+}
 
 template<typename T, typename V>
 Matrix<T, V> Matrix<T, V>::transpose() {
@@ -147,6 +142,25 @@ Matrix<T, V> Matrix<T, V>::transpose() {
 
 //
 // Essential digital operators
+//
+template<typename T, typename V>
+void Matrix<T, V>::operator+=(const Matrix& n_matrix) {
+
+}
+
+template<typename T, typename V>
+void Matrix<T, V>::operator-=(const Matrix& n_matrix) {
+
+}
+
+template<typename T, typename V>
+void Matrix<T, V>::operator*=(const Matrix& n_matrix) {
+
+}
+
+
+//
+// Boolean operators
 //
 
 template<typename T, typename V>
@@ -183,26 +197,22 @@ bool Matrix<T, V>::operator!=(const Matrix& n_matrix) {
 
 template<typename T, typename V>
 bool Matrix<T, V>::operator<(const Matrix& n_matrix) {
-    
+    return Matrix<T>(1, 1, 0.0);
 }
 
-//
-// Matrix function
-//
 template<typename T, typename V>
-Matrix<T, V> Matrix<T, V>::inverse(const Matrix& n_matrix) {
-    Matrix<T, V>product(m_rowSize, m_colSize);
+bool Matrix<T, V>::operator>(const Matrix& n_matrix) {
+    return Matrix<T>(1, 1, 0.0);
+}
 
-    if(m_colSize == n_matrix.getRowSize()) {
-        for (V i = 0; i < m_rowSize; i++) {
-            for (V j = 0; j < m_colSize; j++) {
-                product(i, j) = 0; //Some hard ass math shit that need to be implemented...
-            }
-        }
-    } else {
-        throw "Cannot find inverse of this matrix.";
-    }
-    return product;
+template<typename T, typename V>
+bool Matrix<T, V>::operator<=(const Matrix& n_matrix) {
+    return Matrix<T>(1, 1, 0.0);
+}
+
+template<typename T, typename V>
+bool Matrix<T, V>::operator>=(const Matrix& n_matrix) {
+    return Matrix<T>(1, 1, 0.0);
 }
 
 //
@@ -236,6 +246,25 @@ void Matrix<T, V>::print() const {
         }
         std::cout << std::endl;
     }
+}
+
+//
+// Matrix function
+//
+template<typename T, typename V>
+Matrix<T, V> Matrix<T, V>::inverse(const Matrix& n_matrix) {
+    Matrix<T, V>product(m_rowSize, m_colSize);
+
+    if(m_colSize == n_matrix.getRowSize()) {
+        for (V i = 0; i < m_rowSize; i++) {
+            for (V j = 0; j < m_colSize; j++) {
+                product(i, j) = 0; //Some hard ass math shit that need to be implemented...
+            }
+        }
+    } else {
+        throw "Cannot find inverse of this matrix.";
+    }
+    return product;
 }
 
 //

@@ -36,8 +36,8 @@ public:
     Matrix operator+(const Matrix&);
     Matrix operator-(const Matrix&);
     Matrix operator*(const Matrix&);
-    Matrix operator^(T); // ni
-    Matrix operator^(char*); // ni
+    Matrix operator^(T); // nfi
+    Matrix operator^(char*); // nfi
     Matrix transpose();
 
     // Essential digital operators
