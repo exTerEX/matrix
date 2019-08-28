@@ -117,6 +117,21 @@ Matrix<T, V> Matrix<T, V>::operator*(const Matrix& n_matrix) {
     }
 }
 
+/*template<typename T, typename V>
+Matrix Matrix<T, V>::operator^(T scalar) {
+    if (scalar < 0) { // if to trigger intvert operation
+        ;
+    } else {
+        ;
+    }
+    return Matrix(1, 1, 0.0);
+}
+
+template<typename T, typename V>
+Matrix Matrix<T, V>::operator^(char scalar) {
+    return Matrix(1, 1, 0.0);
+}*/
+
 template<typename T, typename V>
 Matrix<T, V> Matrix<T, V>::transpose() {
     Matrix product(m_rowSize, m_colSize);
@@ -130,6 +145,50 @@ Matrix<T, V> Matrix<T, V>::transpose() {
     return product;
 }
 
+//
+// Essential digital operators
+//
+
+template<typename T, typename V>
+bool Matrix<T, V>::operator==(const Matrix& n_matrix) {
+    if (m_colSize == n_matrix.getColSize() && m_colSize == n_matrix.getRowSize()) {
+        for (V i = 0; i < n_matrix.getColSize(); i++) {
+            for (V j = 0; j < n_matrix.getRowSize(); j++) {
+                if (m_matrix[i][j] != n_matrix.m_matrix[i][j]) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    } else {
+        return false;
+    }
+}
+
+template<typename T, typename V>
+bool Matrix<T, V>::operator!=(const Matrix& n_matrix) {
+    if (m_colSize == n_matrix.getColSize() && m_colSize == n_matrix.getRowSize()) {
+        for (V i = 0; i < n_matrix.getColSize(); i++) {
+            for (V j = 0; j < n_matrix.getRowSize(); j++) {
+                if (m_matrix[i][j] != n_matrix.m_matrix[i][j]) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    } else {
+        return true;
+    }
+}
+
+template<typename T, typename V>
+bool Matrix<T, V>::operator<(const Matrix& n_matrix) {
+    
+}
+
+//
+// Matrix function
+//
 template<typename T, typename V>
 Matrix<T, V> Matrix<T, V>::inverse(const Matrix& n_matrix) {
     Matrix<T, V>product(m_rowSize, m_colSize);

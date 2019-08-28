@@ -36,7 +36,8 @@ public:
     Matrix operator+(const Matrix&);
     Matrix operator-(const Matrix&);
     Matrix operator*(const Matrix&);
-    Matrix operator^(const Matrix&); // ni
+    Matrix operator^(T); // ni
+    Matrix operator^(char*); // ni
     Matrix transpose();
 
     // Essential digital operators
@@ -46,8 +47,8 @@ public:
     void operator*=(const Matrix&); // ni
 
     // Boolean operators
-    bool operator==(const Matrix&); // ni
-    bool operator!=(const Matrix&); // ni
+    bool operator==(const Matrix&);
+    bool operator!=(const Matrix&);
     bool operator<(const Matrix&); // ni
     bool operator>(const Matrix&); // ni
     bool operator<=(const Matrix&); // ni
@@ -59,6 +60,7 @@ public:
 
     // Matrix functions
     Matrix inverse(const Matrix&); // nfi
+    T determinant(const Matrix&) // ni
 
     // Aesthetic Methods
     V shape() const; // nfi
