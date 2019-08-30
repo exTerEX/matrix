@@ -1,4 +1,3 @@
-
 # Created by https://www.gitignore.io/api/c,c++,code,cmake
 # Edit at https://www.gitignore.io/?templates=c,c++,code,cmake
 
@@ -100,3 +99,6 @@ _deps
 !.vscode/extensions.json
 
 # End of https://www.gitignore.io/api/c,c++,code,cmake
+
+# Special exceptions to standard document
+!/bin/*.lib
