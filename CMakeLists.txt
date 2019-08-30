@@ -10,8 +10,8 @@ include(CPack)
 
 enable_testing()
 
-set(EXECUTABLE_OUTPUT_PATH "/Matrix/")
-set(LIBRARY_OUTPUT_PATH "/Matrix/")
+set(EXECUTABLE_OUTPUT_PATH "/Matrix/bin/")
+set(LIBRARY_OUTPUT_PATH "/Matrix/bin/")
 
 # Variables
 set(FilesToIncludeInMatrixExe
@@ -20,10 +20,10 @@ set(FilesToIncludeInMatrixExe
     "src/Matrix.cpp"
 )
 
-#set(FilesToIncludeInMatrixLib
-#    "src/Matrix.h"
-#    "src/Matrix.cpp"
-#)
+set(FilesToIncludeInMatrixLib
+    "src/Matrix.h"
+    "src/Matrix.cpp"
+)
 
 add_executable(Matrix ${FilesToIncludeInMatrixExe})
 # add_library(Matrix ${FilesToIncludeInMatrixLib})
