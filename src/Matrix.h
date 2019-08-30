@@ -8,13 +8,9 @@
 template<typename T, typename V = unsigned>
 class Matrix {
 public:
-    // Initialize a square matrix
+    // Initialize a matrix with parameters.
     Matrix(V);
-
-    // Initialize a m*n matrix
     Matrix(V, V);
-
-    // Initialize m*n matrix with value.
     Matrix(V, V, T);
 
     // Copy constructor
@@ -22,8 +18,6 @@ public:
 
     // Initialize a matrix from vector.
     Matrix(std::vector<T>);
-
-    // Initialize a matrix from nested vector.
     Matrix(std::vector<std::vector<T>>);
 
     // Destructor
@@ -36,34 +30,22 @@ public:
     Matrix operator+(const Matrix&);
     Matrix operator-(const Matrix&);
     Matrix operator*(const Matrix&);
-    Matrix operator^(T); // nfi
-    Matrix operator^(char*); // nfi
+    Matrix operator^(T); // ni
     Matrix transpose();
-
-    // Essential digital operators
-    void operator=(const Matrix&); // ni
-    void operator+=(const Matrix&); // ni
-    void operator-=(const Matrix&); // ni
-    void operator*=(const Matrix&); // ni
 
     // Boolean operators
     bool operator==(const Matrix&);
     bool operator!=(const Matrix&);
-    bool operator<(const Matrix&); // ni
-    bool operator>(const Matrix&); // ni
-    bool operator<=(const Matrix&); // ni
-    bool operator>=(const Matrix&); // ni
 
     // Scalar operations
     Matrix operator*(T);
-    Matrix operator/(T);
 
     // Matrix functions
-    Matrix inverse(const Matrix&); // nfi
-    T determinant(const Matrix&) // ni
+    Matrix inverse(const Matrix&); // ni
+    T determinant(const Matrix&); // ni
 
     // Aesthetic Methods
-    V shape() const; // nfi
+    V shape() const; // ni
     void print() const;
 
 protected:
@@ -74,7 +56,7 @@ private:
     V m_rowSize, m_colSize;
     std::vector<std::vector<T>> m_matrix;
 
-    void fill(T);
+    void fill_matrix(T);
 
 };
 

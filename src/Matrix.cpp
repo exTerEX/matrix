@@ -2,40 +2,31 @@
 
 template<typename T, typename V>
 Matrix<T, V>::Matrix(V size) {
-    m_rowSize = m_colSize = size;
-
-    fill(0);
+    m_rowSize = size; m_colSize = size;
+    fill_matrix(0);
 }
 
 template<typename T, typename V>
 Matrix<T, V>::Matrix(V row, V col) {
-    m_rowSize = row;
-    m_colSize = col;
-
-    fill(0);
+    m_rowSize = row; m_colSize = col;
+    fill_matrix(0);
 }
 
 template<typename T, typename V>
 Matrix<T, V>::Matrix(V row, V col, T data) {
-    m_rowSize = row;
-    m_colSize = col;
-
-    fill(data);
+    m_rowSize = row; m_colSize = col;
+    fill_matrix(data);
 }
 
 template<typename T, typename V>
 Matrix<T, V>::Matrix(const Matrix& n_matrix) {
-    m_rowSize = n_matrix.getRowSize();
-    m_colSize = n_matrix.getColSize();
-
+    m_rowSize = n_matrix.getRowSize(); m_colSize = n_matrix.getColSize();
     m_matrix = n_matrix.m_matrix;
 }
 
 template<typename T, typename V>
 Matrix<T, V>::Matrix(std::vector<T> n_matrix) {
-    m_rowSize = n_matrix.size();
-    m_colSize = 1;
-
+    m_rowSize = n_matrix.size(); m_colSize = 1;
     m_matrix.resize(m_rowSize);
     for (V i = 0; i < m_rowSize; i++)
     {
@@ -45,14 +36,14 @@ Matrix<T, V>::Matrix(std::vector<T> n_matrix) {
 
 template<typename T, typename V>
 Matrix<T, V>::Matrix(std::vector<std::vector<T>> n_matrix) {
-    m_rowSize = n_matrix.size();
-    m_colSize = n_matrix[0].size();
-
+    m_rowSize = n_matrix.size(); m_colSize = n_matrix[0].size();
     m_matrix = n_matrix;
 }
 
 template<typename T, typename V>
-Matrix<T, V>::~Matrix() {}
+Matrix<T, V>::~Matrix() {
+
+}
 
 //
 // Access and iterators
@@ -68,11 +59,8 @@ T& Matrix<T, V>::operator()(const V& row, const V& col) {
 template<typename T, typename V>
 Matrix<T, V> Matrix<T, V>::operator+(const Matrix& n_matrix) {
     Matrix product(m_rowSize, m_colSize);
-
-    for (V i = 0; i < m_rowSize; i++)
-    {
-        for (V j = 0; j < m_colSize; j++)
-        {
+    for (V i = 0; i < m_rowSize; i++) {
+        for (V j = 0; j < m_colSize; j++) {
             product(i, j) = this->m_matrix[i][j] + n_matrix.m_matrix[i][j];
         }
     }
@@ -82,11 +70,8 @@ Matrix<T, V> Matrix<T, V>::operator+(const Matrix& n_matrix) {
 template<typename T, typename V>
 Matrix<T, V> Matrix<T, V>::operator-(const Matrix& n_matrix) {
     Matrix product(m_rowSize, m_colSize);
-
-    for (V i = 0; i < m_rowSize; i++)
-    {
-        for (V j = 0; j < m_colSize; j++)
-        {
+    for (V i = 0; i < m_rowSize; i++) {
+        for (V j = 0; j < m_colSize; j++) {
             product(i, j) = this->m_matrix[i][j] - n_matrix.m_matrix[i][j];
         }
     }
@@ -96,16 +81,12 @@ Matrix<T, V> Matrix<T, V>::operator-(const Matrix& n_matrix) {
 template<typename T, typename V>
 Matrix<T, V> Matrix<T, V>::operator*(const Matrix& n_matrix) {
     Matrix product(m_rowSize, n_matrix.getColSize());
-
     if(m_colSize == n_matrix.getRowSize()) {
         T tmp = 0.0;
-        for (V i = 0; i < m_rowSize; i++)
-        {
-            for (V j = 0; j < n_matrix.getColSize(); j++)
-            {
+        for (V i = 0; i < m_rowSize; i++) {
+            for (V j = 0; j < n_matrix.getColSize(); j++) {
                 tmp = 0.0;
-                for (V k = 0; k < m_colSize; k++)
-                {
+                for (V k = 0; k < m_colSize; k++) {
                     tmp += m_matrix[i][k] * n_matrix.m_matrix[i][j];
                 }
                 product(i, j) = tmp;
@@ -118,21 +99,14 @@ Matrix<T, V> Matrix<T, V>::operator*(const Matrix& n_matrix) {
 }
 
 template<typename T, typename V>
-Matrix<T, V> Matrix<T, V>::operator^(T) {
-    return Matrix<T>(1, 1, 0.0);
-}
-
-template<typename T, typename V>
-Matrix<T, V> Matrix<T, V>::operator^(char scalar) {
-    return Matrix<T>(1, 1, 0.0);
+Matrix<T, V> Matrix<T, V>::operator^(T scalar) {
+    return Matrix<T>(1, 1);
 }
 
 template<typename T, typename V>
 Matrix<T, V> Matrix<T, V>::transpose() {
     Matrix product(m_rowSize, m_colSize);
-
-    for (V i = 0; i < m_colSize; i++)
-    {
+    for (V i = 0; i < m_colSize; i++) {
         for (V j = 0; j < m_rowSize; j++) {
             product(i,j) = this->m_matrix[j][i];
         }
@@ -141,28 +115,8 @@ Matrix<T, V> Matrix<T, V>::transpose() {
 }
 
 //
-// Essential digital operators
-//
-template<typename T, typename V>
-void Matrix<T, V>::operator+=(const Matrix& n_matrix) {
-
-}
-
-template<typename T, typename V>
-void Matrix<T, V>::operator-=(const Matrix& n_matrix) {
-
-}
-
-template<typename T, typename V>
-void Matrix<T, V>::operator*=(const Matrix& n_matrix) {
-
-}
-
-
-//
 // Boolean operators
 //
-
 template<typename T, typename V>
 bool Matrix<T, V>::operator==(const Matrix& n_matrix) {
     if (m_colSize == n_matrix.getColSize() && m_colSize == n_matrix.getRowSize()) {
@@ -195,26 +149,6 @@ bool Matrix<T, V>::operator!=(const Matrix& n_matrix) {
     }
 }
 
-template<typename T, typename V>
-bool Matrix<T, V>::operator<(const Matrix& n_matrix) {
-    return Matrix<T>(1, 1, 0.0);
-}
-
-template<typename T, typename V>
-bool Matrix<T, V>::operator>(const Matrix& n_matrix) {
-    return Matrix<T>(1, 1, 0.0);
-}
-
-template<typename T, typename V>
-bool Matrix<T, V>::operator<=(const Matrix& n_matrix) {
-    return Matrix<T>(1, 1, 0.0);
-}
-
-template<typename T, typename V>
-bool Matrix<T, V>::operator>=(const Matrix& n_matrix) {
-    return Matrix<T>(1, 1, 0.0);
-}
-
 //
 // Scalar operations
 //
@@ -235,7 +169,10 @@ Matrix<T, V> Matrix<T, V>::operator*(T scalar) {
 //
 // Aesthetic Methods
 //
-
+/*template<typename T, typename V>
+V Matrix<T, V>::shape() const {
+    
+}*/
 
 template<typename T, typename V>
 void Matrix<T, V>::print() const {
@@ -284,7 +221,7 @@ V Matrix<T, V>::getColSize() const {
 // Private
 //
 template<typename T, typename V>
-void Matrix<T, V>::fill(T data) {
+void Matrix<T, V>::fill_matrix(T data) {
     m_matrix.resize(m_rowSize);
     for (V i = 0; i < m_rowSize; i++)
     {

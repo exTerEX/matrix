@@ -38,4 +38,8 @@ int main(int argc, char** argv) {
     Matrix<int> test_transpose_operator = test_minus_operator.transpose();
     test_transpose_operator.print();
 
+    test_plus_operator.print();
+    test_plus_operator = test_plus_operator + test_another_vector_vector_init;
+    test_plus_operator.print();
+
 }
