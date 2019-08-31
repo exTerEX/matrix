@@ -6,18 +6,68 @@
 		}
 	],
 	"settings": {
-		"C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools",
 		"files.exclude": {
 			"**/bin": false,
 			"**/.git": false,
 			"**/.env":false,
 			"**/build": false
-		}
+		},
+		"C_Cpp.autoAddFileAssociations": true,
+		"C_Cpp.autocomplete": "Default",
+		"C_Cpp.commentContinuationPatterns": [
+			"/**"
+		],
+		"C_Cpp.configurationWarnings": "Enabled",
+		"C_Cpp.default.browse.limitSymbolsToIncludedHeaders": true,
+		"C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools",
+		"C_Cpp.default.cStandard": "c11",
+		"C_Cpp.default.cppStandard": "c++20",
+		"C_Cpp.default.defines": null,
+		"C_Cpp.default.includePath": null,
+		"C_Cpp.default.intelliSenseMode": "msvc-x64",
+		"C_Cpp.experimentalFeatures": "Enabled",
+		"C_Cpp.formatting": "Default",
+		"C_Cpp.enhancedColorization": "Enabled",
+		"C_Cpp.intelliSenseEngine": "Default",
+		"C_Cpp.loggingLevel": "Debug",
+		"C_Cpp.navigation.length": 60,
+		"C_Cpp.suggestSnippets": true,
+		"C_Cpp.updateChannel": "Default",
+		"C_Cpp.workspaceParsingPriority": "highest",
+		"C_Cpp.workspaceSymbols": "All",
+		"cmake.autoRestartBuild": false,
+		"cmake.buildBeforeRun": true,
+		"cmake.buildDirectory": "${workspaceRoot}/build",
+		"cmake.buildEnvironment": {
+			
+		},
+		"cmake.ctest.parallelJobs": 0,
+		"cmake.ctestArgs": [
+
+		],
+		"cmake.enableTraceLogging": false,
+		"cmake.enabledOutputParsers": [
+			"cmake",
+			"gcc",
+			"gnuld",
+			"msvc",
+			"ghs"
+		],
+		"cmake.parallelJobs": 0,
+		"cmake.platform": "x64",
+		"cmake.saveBeforeBuild": true,
+		"cmake.useCMakeServer": true
 	},
 	"extensions": {
+		"recommendations": [
 
+		],
+		"unwantedRecommendations": [
+
+		]
 	},
 	"launch": {
+		"version": "0.2.0",
 		"configurations": [
 			
 		],
@@ -28,6 +78,9 @@
 					
 				]
 			}
+		],
+		"inputs": [
+			
 		]
 	},
 	"remoteAuthority": ""
