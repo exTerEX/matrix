@@ -44,7 +44,7 @@
 		"cmake.buildBeforeRun": true,
 		"cmake.buildDirectory": "${workspaceRoot}/build",
 		"cmake.buildEnvironment": {
-			
+
 		},
 		"cmake.ctest.parallelJobs": 0,
 		"cmake.ctestArgs": [
@@ -77,12 +77,12 @@
 			{
 				"name": "Compound",
 				"configurations": [
-					
+
 				]
 			}
 		],
 		"inputs": [
-			
+
 		]
 	},
 	"remoteAuthority": ""

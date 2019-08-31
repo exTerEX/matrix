@@ -11,8 +11,8 @@ end_of_line = lf
 # Always end files with a blank line
 insert_final_newline = true
 # Force space characters for indentation
-indent_style = space
-# Always indent by 4 characters
-indent_size = 4
+indent_style = tab
 # Remove whitespace characters at the end of line
 trim_trailing_whitespace = true
+# Charset
+charset = utf-8
