@@ -102,3 +102,7 @@ _deps
 
 # Special exceptions to standard document
 !/bin/*.lib
+
+**/CPackConfig.cmake
+**/CPackSourceConfig.cmake
+**/DartConfiguration.tcl
