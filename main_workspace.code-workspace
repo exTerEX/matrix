@@ -8,9 +8,11 @@
 	"settings": {
 		"files.exclude": {
 			"**/bin": false,
-			"**/.git": false,
-			"**/.env":false,
-			"**/build": false
+			"**/.git": true,
+			"**/.env":true,
+			"**/build": false,
+			".gitignore": false,
+			".editorconfig": false
 		},
 		"C_Cpp.autoAddFileAssociations": true,
 		"C_Cpp.autocomplete": "Default",
@@ -23,7 +25,10 @@
 		"C_Cpp.default.cStandard": "c11",
 		"C_Cpp.default.cppStandard": "c++20",
 		"C_Cpp.default.defines": null,
-		"C_Cpp.default.includePath": null,
+		"C_Cpp.default.includePath": [
+			"${workspaceFolder}/",
+			"${workspaceFolder}/src/"
+		],
 		"C_Cpp.default.intelliSenseMode": "msvc-x64",
 		"C_Cpp.experimentalFeatures": "Enabled",
 		"C_Cpp.formatting": "Default",
@@ -68,9 +73,6 @@
 	},
 	"launch": {
 		"version": "0.2.0",
-		"configurations": [
-			
-		],
 		"compounds": [
 			{
 				"name": "Compound",
