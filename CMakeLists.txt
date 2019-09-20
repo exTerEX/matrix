@@ -25,6 +25,10 @@ set(FilesToIncludeInMatrixLib
     "src/Matrix.cpp"
 )
 
+set(FilesToTestMatrix
+    "test/init_square_matrix.cpp"
+)
+
 add_executable(Matrix ${FilesToIncludeInMatrixExe})
 # add_library(Matrix ${FilesToIncludeInMatrixLib})
 
