@@ -25,9 +25,11 @@ set(FilesToIncludeInMatrixLib
     "src/Matrix.cpp"
 )
 
+# Executable/lib output
 add_executable(Matrix ${FilesToIncludeInMatrixExe})
 add_library(MatrixLib STATIC ${FilesToIncludeInMatrixLib})
 
+# Tests
 add_test(square_int_test sit "test/int_square_matrix_test.cpp")
 add_test(square_float_test sft "test/float_square_matrix_test.cpp")
 add_test(square_double_test sdt "test/double_square_matrix_test.cpp")
