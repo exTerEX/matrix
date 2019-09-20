@@ -25,12 +25,18 @@ set(FilesToIncludeInMatrixLib
     "src/Matrix.cpp"
 )
 
-set(FilesToTestMatrix
-    "test/init_square_matrix.cpp"
-)
-
 add_executable(Matrix ${FilesToIncludeInMatrixExe})
-# add_library(Matrix ${FilesToIncludeInMatrixLib})
+add_library(MatrixLib STATIC ${FilesToIncludeInMatrixLib})
+
+add_test(square_int_test sit "test/int_square_matrix_test.cpp")
+add_test(square_float_test sft "test/float_square_matrix_test.cpp")
+add_test(square_double_test sdt "test/double_square_matrix_test.cpp")
+add_test(mn_int_test mit "test/int_mn_matrix_test.cpp")
+add_test(mn_float_test mft "test/float_mn_matrix_test.cpp")
+add_test(mn_double_test mdt "test/double_mn_matrix_test.cpp")
+add_test(vector_int_test vit "test/int_vector_matrix_test.cpp")
+add_test(vector_float_test vft "test/float_vector_matrix_test.cpp")
+add_test(vector_double_test vdt "test/double_vector_matrix_test.cpp")
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
