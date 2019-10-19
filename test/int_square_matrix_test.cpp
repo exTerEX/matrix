@@ -7,4 +7,5 @@ int main(int argc, char** argv) {
 void test_square_initialization_and_methods() {
     // Init square matrix
     Matrix<int> test_matrix_int(5);
+    
 }
