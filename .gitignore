@@ -1,69 +1,21 @@
-# Created by https://www.gitignore.io/api/c,c++,code,cmake
-# Edit at https://www.gitignore.io/?templates=c,c++,code,cmake
-
-### C ###
+### C++ ###
 # Prerequisites
 *.d
 
-# Object files
+# Compiled Object files
+*.slo
+*.lo
 *.o
-*.ko
 *.obj
-*.elf
-
-# Linker output
-*.ilk
-*.map
-*.exp
 
 # Precompiled Headers
 *.gch
 *.pch
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
-
-### C++ ###
-# Prerequisites
-
-# Compiled Object files
-*.slo
-
-# Precompiled Headers
-
 # Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
 
 # Fortran module files
 *.mod
@@ -71,8 +23,14 @@ dkms.conf
 
 # Compiled Static libraries
 *.lai
+*.la
+*.a
+*.lib
 
 # Executables
+*.exe
+*.out
+*.app
 
 ### CMake ###
 CMakeLists.txt.user
@@ -86,6 +44,8 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
+**/build/*.cmake
+*.tcl
 
 ### CMake Patch ###
 # External projects
@@ -97,12 +57,9 @@ _deps
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+*.code-workspace
 
-# End of https://www.gitignore.io/api/c,c++,code,cmake
-
-# Special exceptions to standard document
-!/bin/*.lib
-
-**/CPackConfig.cmake
-**/CPackSourceConfig.cmake
-**/DartConfiguration.tcl
+### Ninja ###
+.ninja_deps
+.ninja_log
+**/build/*.ninja

@@ -1,0 +1,17 @@
+{
+    "name": "",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "..",
+        "args": {}
+    },
+    "settings": {},
+    "extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cmake-tools",
+        "twxs.cmake",
+        "cschlosser.doxdocgen",
+        "editorconfig.editorconfig"
+    ],
+    "remoteUser": "vscode"
+}
