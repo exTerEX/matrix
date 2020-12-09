@@ -5,8 +5,8 @@
 	"extensions": [
 		"ms-vscode.cpptools",
 		"ms-vscode.cmake-tools",
+		"xaver.clang-format",
 		"twxs.cmake",
-		"cschlosser.doxdocgen",
 		"editorconfig.editorconfig"
 	]
 }
