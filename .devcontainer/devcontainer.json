@@ -8,6 +8,5 @@
 		"twxs.cmake",
 		"cschlosser.doxdocgen",
 		"editorconfig.editorconfig"
-	],
-	"remoteUser": "vscode"
+	]
 }
