@@ -1,0 +1,4 @@
+[submodule "utils/format.cmake"]
+	path = utils/format.cmake
+	url = https://github.com/TheLartians/Format.cmake
+	branch = master
