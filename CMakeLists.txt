@@ -1,44 +1,27 @@
-cmake_minimum_required(VERSION 3.0.0)
-project(Matrix)
+cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
 
-set(CMAKE_PATCH_VERSION 0)
-set(CMAKE_MINOR_VERSION 1)
-set(CMAKE_MAJOR_VERSION 1)
+# https://medium.com/heuristics/c-application-development-part-3-cmakelists-txt-from-scratch-7678253e5e24
+# https://dominikberner.ch/cmake-interface-lib/
+# https://stackoverflow.com/questions/17511496/how-to-create-a-shared-library-with-cmake
+# http://www.mariobadr.com/creating-a-header-only-library-with-cmake.html
+
+project(
+  libmatrix
+  VERSION 0.1.0
+  LANGUAGES CXX)
 
 include(CTest)
 include(CPack)
+include(GNUInstallDirs)
 
-enable_testing()
+# modules
+add_subdirectory(${CMAKE_SOURCE_DIR}/utils/format.cmake)
 
-set(EXECUTABLE_OUTPUT_PATH "/Matrix/bin/")
-set(LIBRARY_OUTPUT_PATH "/Matrix/bin/")
+# library
+add_library(${PROJECT_NAME} INTERFACE)
+target_include_directories(
+  ${PROJECT_NAME}
+  INTERFACE $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
+            $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
-# Variables
-set(FilesToIncludeInMatrixExe
-    "main.cpp"
-    "src/Matrix.h"
-    "src/Matrix.cpp"
-)
-
-set(FilesToIncludeInMatrixLib
-    "src/Matrix.h"
-    "src/Matrix.cpp"
-)
-
-# Executable/lib output
-add_executable(Matrix ${FilesToIncludeInMatrixExe})
-add_library(MatrixLib STATIC ${FilesToIncludeInMatrixLib})
-
-# Tests
-add_test(square_int_test sit "test/int_square_matrix_test.cpp")
-add_test(square_float_test sft "test/float_square_matrix_test.cpp")
-add_test(square_double_test sdt "test/double_square_matrix_test.cpp")
-add_test(mn_int_test mit "test/int_mn_matrix_test.cpp")
-add_test(mn_float_test mft "test/float_mn_matrix_test.cpp")
-add_test(mn_double_test mdt "test/double_mn_matrix_test.cpp")
-add_test(vector_int_test vit "test/int_vector_matrix_test.cpp")
-add_test(vector_float_test vft "test/float_vector_matrix_test.cpp")
-add_test(vector_double_test vdt "test/double_vector_matrix_test.cpp")
-
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+# test
