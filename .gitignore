@@ -62,4 +62,4 @@ _deps
 ### Ninja ###
 .ninja_deps
 .ninja_log
-**/build/*.ninja
+**/build/
