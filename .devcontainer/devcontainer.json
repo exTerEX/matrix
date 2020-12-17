@@ -9,5 +9,5 @@
 		"editorconfig.editorconfig",
 		"cheshirekow.cmake-format"
 	],
-	"postCreateCommand": "sudo pip install -r requirements-dev.txt"
+	"postCreateCommand": "pip install -r requirements.txt"
 }
