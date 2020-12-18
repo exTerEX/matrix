@@ -1,8 +1,10 @@
 #include <iostream>
 #include <vector>
 
-#ifndef LIBMATRIX_H
-#define LIBMATRIX_H
+#ifndef MATRIX_H
+#define MATRIX_H
+
+namespace libmatrix {
 
 template <class T> // (T)ype
 class matrix {
@@ -184,5 +186,5 @@ public:
     }
   }
 };
-
+} // namespace libmatrix
 #endif
