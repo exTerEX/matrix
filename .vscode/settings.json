@@ -1,3 +1,20 @@
 {
+	"[c]": {
+		"editor.wordBasedSuggestions": false,
+		"editor.suggest.insertMode": "replace",
+		"editor.semanticHighlighting.enabled": true,
+		"editor.defaultFormatter": "xaver.clang-format",
+		"files.insertFinalNewline": true
+	},
+	"[cpp]": {
+		"editor.wordBasedSuggestions": false,
+		"editor.suggest.insertMode": "replace",
+		"editor.semanticHighlighting.enabled": true,
+		"editor.defaultFormatter": "xaver.clang-format",
+		"files.insertFinalNewline": true
+	},
+	"[cmake]": {
+		"editor.defaultFormatter": "twxs.cmake"
+	},
 	"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
 }
