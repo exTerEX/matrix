@@ -13,6 +13,8 @@
 		"editor.defaultFormatter": "xaver.clang-format",
 		"files.insertFinalNewline": true
 	},
-	"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
-	"cmakeFormat.exePath": "/usr/local/bin/cmake-format"
+	"C_Cpp.default.includePath": [
+		"${workspaceFolder}",
+		"${workspaceFolder}/include"
+	]
 }
