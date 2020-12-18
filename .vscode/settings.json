@@ -13,8 +13,6 @@
 		"editor.defaultFormatter": "xaver.clang-format",
 		"files.insertFinalNewline": true
 	},
-	"[cmake]": {
-		"editor.defaultFormatter": "twxs.cmake"
-	},
-	"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
+	"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+	"cmakeFormat.exePath": "/usr/local/bin/cmake-format"
 }
