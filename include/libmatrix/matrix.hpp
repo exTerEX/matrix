@@ -134,7 +134,13 @@ public:
     }
   }
 
-  matrix operator^(T n) {}
+  matrix operator^(int n) {
+    matrix product(this->data);
+    for (unsigned index = 1; index <= n; index++) {
+      product *= product;
+    }
+    return product;
+  }
 
   matrix transpose() {
     matrix product(rows, cols);
