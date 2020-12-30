@@ -91,7 +91,7 @@ public:
     data = m;
   }
 
-  matrix operator()(unsigned row, unsigned col) { return this->data[row][col]; }
+  T operator()(unsigned row, unsigned col) { return this->data[row][col]; }
 
   matrix operator+(const matrix &m) {
     matrix product(rows, cols);
