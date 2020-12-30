@@ -1,19 +1,44 @@
-cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 
 project(
-  libmatrix
-  VERSION 0.1.0
-  LANGUAGES C CXX)
+  matrix
+  LANGUAGES CXX
+  VERSION 0.1.0)
+
+set(CMAKE_CXX_STANDARD 11)
 
 include(CTest)
 include(CPack)
-include(GNUInstallDirs)
+
+enable_testing()
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # library
-add_library(${PROJECT_NAME} INTERFACE)
-target_include_directories(
-  ${PROJECT_NAME} INTERFACE $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
-                            $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
+add_library(lib${PROJECT_NAME} INTERFACE)
+
+# example
+add_executable(${PROJECT_NAME} main.cpp)
+
+# python bindings
+find_package(Python COMPONENTS Interpreter Development)
+
+if(${Python_FOUND} AND ${Python_VERSION} GREATER_EQUAL "3.6")
+  if(${Python_Development_FOUND})
+
+  else()
+    message(WARNING "Cannot find Python3-dev library.")
+  endif()
+else()
+  message(WARNING "Python requirements not met to build bindings.")
+endif()
 
 # test
-add_executable(binary main.cpp)
+file(GLOB tests "tests/**/test_*.cpp")
+
+foreach(file ${tests})
+  add_executable(ext ${file})
+  add_test(${file} COMMAND ${ext})
+  set_tests_properties(${file} PROPERTIES TIMEOUT 120)
+endforeach()
