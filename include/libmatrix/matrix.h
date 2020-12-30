@@ -67,11 +67,6 @@ public:
 
   matrix operator()(unsigned row, unsigned col) { return this->data[row][col]; }
 
-  /*matrix operator[](unsigned row, unsigned col)
-  {
-      return this->data[row][col];
-  }*/
-
   matrix operator+(const matrix &m) {
     matrix product(rows, cols);
     for (unsigned i = 0; i < rows; i++) {
