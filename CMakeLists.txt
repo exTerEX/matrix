@@ -7,10 +7,7 @@ project(
 
 set(CMAKE_CXX_STANDARD 11)
 
-include(CTest)
 include(CPack)
-
-enable_testing()
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
@@ -34,11 +31,28 @@ else()
   message(WARNING "Python requirements not met to build bindings.")
 endif()
 
-# test
+# Test
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+
+include(CTest)
+
+# List of files to run as test
 file(GLOB tests "tests/**/test_*.cpp")
 
 foreach(file ${tests})
-  add_executable(ext ${file})
-  add_test(${file} COMMAND ${ext})
-  set_tests_properties(${file} PROPERTIES TIMEOUT 120)
+  # Create filename without extension
+  string(REGEX REPLACE "(^.*/|\\.[^.]*$)" "" name ${file})
+
+  # Build test executable
+  add_executable(${name} ${file})
+
+  # Test executable with CTest
+  add_test(${name} ${name})
+
+  # Test properties
+  set_tests_properties(
+    ${name} PROPERTIES FAIL_REGULAR_EXPRESSION "(Exception|Assertion|failed.)"
+                       TIMEOUT 120)
 endforeach()
+
+enable_testing()
