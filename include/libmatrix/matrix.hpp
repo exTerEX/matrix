@@ -112,15 +112,32 @@ public:
    */
   T operator()(unsigned row, unsigned col) { return this->data[row][col]; }
 
-  Matrix operator+(const Matrix &m) {
-    Matrix product(rows, cols);
-    for (unsigned i = 0; i < rows; i++) {
-      for (unsigned j = 0; j < cols; j++) {
-        product(i, j) = this->data[i][j] + m.data[i][j];
+  /**
+   * @brief Assignment addition between two equal shaped matrices.
+   *
+   * @param m Matrix to be added.
+   * @return Matrix& Added matrix.
+   */
+  Matrix &operator+=(const Matrix &m) {
+    if (cols == m.cols && rows == m.rows) {
+      for (unsigned index = 0; index < rows; index++) {
+        for (unsigned jndex = 0; jndex < cols; jndex++) {
+          data[index][jndex] = data[index][jndex] + m.data[index][jndex];
+        }
       }
+    } else {
+      ; // FIXME: Throw some exception because of diffent size.
     }
-    return product;
+    return *this;
   }
+
+  /**
+   * @brief Assignment addition between two equal shaped matrices.
+   *
+   * @param m Matrix to be added.
+   * @return Matrix& Added matrix.
+   */
+  Matrix &operator+(const Matrix &m) { return *this += m; }
 
   Matrix operator*(T n) {
     Matrix product(rows, cols);
