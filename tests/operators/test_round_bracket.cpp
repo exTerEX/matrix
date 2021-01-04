@@ -2,7 +2,7 @@
 #include <cassert>
 
 // Test matrix
-libmatrix::matrix<int> m({{1, 2, 3}, {4, 5, 6}, {7, 8, 9}});
+libmatrix::Matrix<int> m({{1, 2, 3}, {4, 5, 6}, {7, 8, 9}});
 
 // Test m(x, y)
 void round_bracket() {
