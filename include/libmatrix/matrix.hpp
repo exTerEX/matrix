@@ -90,6 +90,19 @@ public:
     data = m;
   }
 
+  /**
+   * @brief Copy constructor of class Matrix<T> created to copy-and-swap.
+   *
+   * @param m A matrix to be copied.
+   * @return Matrix& The assigned matrix.
+   */
+  Matrix &operator=(Matrix m) {
+    std::swap(cols, m.cols);
+    std::swap(rows, m.rows);
+    std::swap(data, m.data);
+    return *this;
+  }
+
   T operator()(unsigned row, unsigned col) { return this->data[row][col]; }
 
   Matrix operator+(const Matrix &m) {
