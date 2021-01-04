@@ -23,6 +23,7 @@
  */
 
 #include <iostream>
+#include <utility>
 #include <vector>
 
 #ifndef MATRIX_HPP
@@ -31,7 +32,7 @@
 namespace libmatrix {
 
 template <class T> // (T)ype
-class matrix {
+class Matrix {
 private:
   unsigned rows, cols;
   std::vector<std::vector<T>> data;
@@ -49,31 +50,31 @@ protected:
   unsigned getColSize() const { return this->cols; }
 
 public:
-  matrix(unsigned size, T fill = 0) {
+  Matrix(unsigned size, T fill = 0) {
     rows = size;
     cols = size;
 
     fill_matrix(fill);
   }
 
-  matrix(unsigned rowSize, unsigned colSize, T fill = 0) {
+  Matrix(unsigned rowSize, unsigned colSize, T fill = 0) {
     rows = rowSize;
     cols = colSize;
 
     fill_matrix(fill);
   }
 
-  /*~matrix()
+  /*~Matrix()
   {
   }*/
 
-  matrix(const matrix &m) {
+  Matrix(const Matrix &m) {
     rows = m.getRowSize();
     cols = m.getColSize();
     data = m.data;
   }
 
-  matrix(std::vector<T> m) {
+  Matrix(std::vector<T> m) {
     rows = m.size();
     cols = 1;
 
@@ -83,7 +84,7 @@ public:
     }
   }
 
-  matrix(std::vector<std::vector<T>> m) {
+  Matrix(std::vector<std::vector<T>> m) {
     rows = m.size();
     cols = m[0].size();
     data = m;
@@ -91,8 +92,8 @@ public:
 
   T operator()(unsigned row, unsigned col) { return this->data[row][col]; }
 
-  matrix operator+(const matrix &m) {
-    matrix product(rows, cols);
+  Matrix operator+(const Matrix &m) {
+    Matrix product(rows, cols);
     for (unsigned i = 0; i < rows; i++) {
       for (unsigned j = 0; j < cols; j++) {
         product(i, j) = this->data[i][j] + m.data[i][j];
@@ -101,8 +102,8 @@ public:
     return product;
   }
 
-  matrix operator*(T n) {
-    matrix product(rows, cols);
+  Matrix operator*(T n) {
+    Matrix product(rows, cols);
 
     for (unsigned i = 0; i < rows; i++) {
       for (unsigned j = 0; j < cols; j++) {
@@ -112,8 +113,8 @@ public:
     return product;
   }
 
-  matrix operator*(const matrix &m) {
-    matrix product(rows, m.getColSize());
+  Matrix operator*(const Matrix &m) {
+    Matrix product(rows, m.getColSize());
 
     if (cols == m.getRowSize()) {
       T temp = 0.0;
@@ -132,16 +133,16 @@ public:
     }
   }
 
-  matrix operator^(int n) {
-    matrix product(this->data);
+  Matrix operator^(int n) {
+    Matrix product(this->data);
     for (unsigned index = 1; index <= n; index++) {
       product *= product;
     }
     return product;
   }
 
-  matrix transpose() {
-    matrix product(rows, cols);
+  Matrix transpose() {
+    Matrix product(rows, cols);
     for (unsigned i = 0; i < cols; i++) {
       for (unsigned j = 0; j < rows; j++) {
         product(i, j) = this->data[j][i];
@@ -150,8 +151,8 @@ public:
     return product;
   }
 
-  matrix inverse(const matrix &m) {
-    matrix product(rows, cols);
+  Matrix inverse(const Matrix &m) {
+    Matrix product(rows, cols);
 
     if (cols == m.getRowSize()) {
       for (unsigned i = 0; i < rows; i++) {
@@ -161,12 +162,12 @@ public:
         }
       }
     } else {
-      throw "Cannot find inverse of this matrix.";
+      throw "Cannot find inverse of this Matrix.";
     }
     return product;
   }
 
-  T determinant(const matrix &) {}
+  T determinant(const Matrix &) {}
 
   unsigned shape() const { return 0; }
 
@@ -181,7 +182,7 @@ public:
     }
   }
 
-  bool operator==(const matrix &m) {
+  bool operator==(const Matrix &m) {
     if (cols == m.getColSize() && rows == m.getRowSize()) {
       for (unsigned i = 0; i < m.getColSize(); i++) {
         for (unsigned j = 0; j < m.getRowSize(); j++) {
@@ -196,7 +197,7 @@ public:
     }
   }
 
-  bool operator!=(const matrix &m) {
+  bool operator!=(const Matrix &m) {
     if (cols == m.getColSize() && rows == m.getRowSize()) {
       for (unsigned i = 0; i < m.getColSize(); i++) {
         for (unsigned j = 0; j < m.getRowSize(); j++) {
