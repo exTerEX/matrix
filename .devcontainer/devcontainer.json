@@ -8,7 +8,8 @@
 		"twxs.cmake",
 		"editorconfig.editorconfig",
 		"cheshirekow.cmake-format",
-		"xaver.clang-format"
+		"xaver.clang-format",
+		"cschlosser.doxdocgen"
 	],
 	"postCreateCommand": "pip install -r requirements.txt"
 }
