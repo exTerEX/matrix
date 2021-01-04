@@ -31,7 +31,7 @@
 
 namespace libmatrix {
 
-template <class T> // (T)ype
+template <class T = int> // (T)ype
 class Matrix {
 private:
   unsigned rows, cols;
