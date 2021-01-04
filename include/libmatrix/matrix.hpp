@@ -22,6 +22,7 @@
  * SOFTWARE.
  */
 
+#include <exception>
 #include <iostream>
 #include <utility>
 #include <vector>
@@ -126,7 +127,8 @@ public:
         }
       }
     } else {
-      ; // FIXME: Throw some exception because of diffent size.
+      throw std::runtime_error(
+          "Columns and/or rows does not match between instances.");
     }
     return *this;
   }
