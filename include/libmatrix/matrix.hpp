@@ -103,6 +103,13 @@ public:
     return *this;
   }
 
+  /**
+   * @brief Matrix subscript operator to access cell values.
+   *
+   * @param row Row to access.
+   * @param col Col to access.
+   * @return T Selected cell value.
+   */
   T operator()(unsigned row, unsigned col) { return this->data[row][col]; }
 
   Matrix operator+(const Matrix &m) {
