@@ -152,25 +152,37 @@ public:
     return product;
   }
 
-  Matrix operator*(const Matrix &m) {
-    Matrix product(rows, m.getColSize());
-
-    if (cols == m.getRowSize()) {
-      T temp = 0.0;
-      for (unsigned i = 0; i < rows; i++) {
-        for (unsigned j = 0; j < m.getColSize(); j++) {
-          temp = 0.0;
-          for (unsigned k = 0; k < cols; k++) {
-            temp += data[i][k] * m.data[i][j];
+  /**
+   * @brief Matrix multiplication operator
+   *
+   * @param m multiplicand as a matrix object.
+   * @return Matrix& Product of multiplier and multiplicand as a matrix object.
+   */
+  Matrix &operator*=(const Matrix &m) {
+    Matrix n = *this;
+    if (cols == m.rows) {
+      for (unsigned index = 0; index < rows; index++) {
+        for (unsigned jndex = 0; jndex < cols; jndex++) {
+          T temp = 0.0;
+          for (unsigned kndex = 0; kndex < cols; kndex++) {
+            temp += n.data[index][kndex] * m.data[kndex][jndex];
           }
-          product(i, j) = temp;
+          data[index][jndex] = temp;
         }
       }
-      return product;
     } else {
-      throw "Cannot multiply these matricies!";
+      throw std::runtime_error("These matricies cannot be multiplied.");
     }
+    return *this;
   }
+
+  /**
+   * @brief Matrix multiplication operator
+   *
+   * @param m multiplicand as a matrix object.
+   * @return Matrix& Product of multiplier and multiplicand as a matrix object.
+   */
+  Matrix &operator*(const Matrix &m) { return *this *= m; }
 
   Matrix operator^(int n) {
     Matrix product(this->data);
