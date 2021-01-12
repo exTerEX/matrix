@@ -16,5 +16,6 @@
 	"C_Cpp.default.includePath": [
 		"${workspaceFolder}",
 		"${workspaceFolder}/include"
-	]
+	],
+	"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
 }
