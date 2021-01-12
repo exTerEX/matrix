@@ -46,10 +46,6 @@ private:
   }
 
 protected:
-  unsigned getRowSize() const { return this->rows; }
-
-  unsigned getColSize() const { return this->cols; }
-
 public:
   Matrix(unsigned size, T fill = 0) {
     rows = size;
@@ -70,8 +66,8 @@ public:
   }*/
 
   Matrix(const Matrix &m) {
-    rows = m.getRowSize();
-    cols = m.getColSize();
+    rows = m.rows;
+    cols = m.cols;
     data = m.data;
   }
 
@@ -201,7 +197,7 @@ public:
   Matrix inverse(const Matrix &m) {
     Matrix product(rows, cols);
 
-    if (cols == m.getRowSize()) {
+    if (cols == m.rows) {
       for (unsigned i = 0; i < rows; i++) {
         for (unsigned j = 0; j < cols; j++) {
           product(i, j) =
@@ -230,9 +226,9 @@ public:
   }
 
   bool operator==(const Matrix &m) {
-    if (cols == m.getColSize() && rows == m.getRowSize()) {
-      for (unsigned i = 0; i < m.getColSize(); i++) {
-        for (unsigned j = 0; j < m.getRowSize(); j++) {
+    if (cols == m.cols && rows == m.rows) {
+      for (unsigned i = 0; i < m.cols; i++) {
+        for (unsigned j = 0; j < m.rows; j++) {
           if (data[i][j] != m.data[i][j]) {
             return false;
           }
@@ -245,9 +241,9 @@ public:
   }
 
   bool operator!=(const Matrix &m) {
-    if (cols == m.getColSize() && rows == m.getRowSize()) {
-      for (unsigned i = 0; i < m.getColSize(); i++) {
-        for (unsigned j = 0; j < m.getRowSize(); j++) {
+    if (cols == m.cols && rows == m.rows) {
+      for (unsigned i = 0; i < m.cols; i++) {
+        for (unsigned j = 0; j < m.rows; j++) {
           if (data[i][j] != m.data[i][j]) {
             return true;
           }
