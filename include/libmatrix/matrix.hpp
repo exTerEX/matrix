@@ -141,17 +141,6 @@ public:
    */
   Matrix &operator+(const Matrix &m) { return *this += m; }
 
-  Matrix operator*(T n) {
-    Matrix product(rows, cols);
-
-    for (unsigned i = 0; i < rows; i++) {
-      for (unsigned j = 0; j < cols; j++) {
-        product(i, j) = this->data[i][j] * n;
-      }
-    }
-    return product;
-  }
-
   /**
    * @brief Matrix multiplication operator
    *
@@ -159,12 +148,19 @@ public:
    * @return Matrix& Product of multiplier and multiplicand as a matrix object.
    */
   Matrix &operator*=(const Matrix &m) {
-    Matrix n = *this;
     if (cols == m.rows) {
-      for (unsigned index = 0; index < rows; index++) {
-        for (unsigned jndex = 0; jndex < cols; jndex++) {
+      Matrix n = *this;
+
+      data.clear();
+      rows = n.rows;
+      cols = m.cols;
+      fill_matrix(0);
+
+      // Matrix product(rows, n.cols);
+      for (unsigned index = 0; index < this->rows; index++) {
+        for (unsigned jndex = 0; jndex < this->cols; jndex++) {
           T temp = 0.0;
-          for (unsigned kndex = 0; kndex < cols; kndex++) {
+          for (unsigned kndex = 0; kndex < n.cols; kndex++) {
             temp += n.data[index][kndex] * m.data[kndex][jndex];
           }
           data[index][jndex] = temp;
