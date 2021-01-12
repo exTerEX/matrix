@@ -115,6 +115,14 @@ public:
    * @param m Matrix to be added.
    * @return Matrix& Added matrix.
    */
+  Matrix &operator+(const Matrix &m) { return *this += m; }
+
+  /**
+   * @brief Assignment addition between two equal shaped matrices.
+   *
+   * @param m Matrix to be added.
+   * @return Matrix& Added matrix.
+   */
   Matrix &operator+=(const Matrix &m) {
     if (cols == m.cols && rows == m.rows) {
       for (unsigned index = 0; index < rows; index++) {
@@ -130,12 +138,12 @@ public:
   }
 
   /**
-   * @brief Assignment addition between two equal shaped matrices.
+   * @brief Matrix multiplication operator
    *
-   * @param m Matrix to be added.
-   * @return Matrix& Added matrix.
+   * @param m multiplicand as a matrix object.
+   * @return Matrix& Product of multiplier and multiplicand as a matrix object.
    */
-  Matrix &operator+(const Matrix &m) { return *this += m; }
+  Matrix &operator*(const Matrix &m) { return *this *= m; }
 
   /**
    * @brief Matrix multiplication operator
@@ -169,22 +177,6 @@ public:
   }
 
   /**
-   * @brief Matrix multiplication operator
-   *
-   * @param m multiplicand as a matrix object.
-   * @return Matrix& Product of multiplier and multiplicand as a matrix object.
-   */
-  Matrix &operator*(const Matrix &m) { return *this *= m; }
-
-  /**
-   * @brief Scalar multiplication operator
-   *
-   * @param scalar Multiplicand as a scalar value.
-   * @return Matrix& Product of multiplier and multiplicand.
-   */
-  Matrix &operator*=(const T scalar) { return *this = *this * scalar; }
-
-  /**
    * @brief Scalar multiplication operator
    *
    * @param scalar Multiplicand as a scalar value.
@@ -199,6 +191,14 @@ public:
     }
     return product;
   }
+
+  /**
+   * @brief Scalar multiplication operator
+   *
+   * @param scalar Multiplicand as a scalar value.
+   * @return Matrix& Product of multiplier and multiplicand.
+   */
+  Matrix &operator*=(const T scalar) { return *this = *this * scalar; }
 
   Matrix operator^(int n) {
     Matrix product(this->data);
