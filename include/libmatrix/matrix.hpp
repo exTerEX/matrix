@@ -176,6 +176,30 @@ public:
    */
   Matrix &operator*(const Matrix &m) { return *this *= m; }
 
+  /**
+   * @brief Scalar multiplication operator
+   *
+   * @param scalar Multiplicand as a scalar value.
+   * @return Matrix& Product of multiplier and multiplicand.
+   */
+  Matrix &operator*=(const T scalar) { return *this = *this * scalar; }
+
+  /**
+   * @brief Scalar multiplication operator
+   *
+   * @param scalar Multiplicand as a scalar value.
+   * @return Matrix Product of multiplier and multiplicand.
+   */
+  Matrix operator*(const T scalar) {
+    Matrix product(rows, cols);
+    for (unsigned index = 0; index < this->rows; index++) {
+      for (unsigned jndex = 0; jndex < this->cols; jndex++) {
+        product.data[index][jndex] = this->data[index][jndex] * scalar;
+      }
+    }
+    return product;
+  }
+
   Matrix operator^(int n) {
     Matrix product(this->data);
     for (unsigned index = 1; index <= n; index++) {
