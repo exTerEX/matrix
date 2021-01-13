@@ -115,7 +115,21 @@ public:
    * @param m Matrix to be added.
    * @return Matrix& Added matrix.
    */
-  Matrix &operator+(const Matrix &m) { return *this += m; }
+  Matrix operator+(const Matrix &m) {
+    if (cols == m.cols && rows == m.rows) {
+      Matrix<T> product(rows, cols);
+
+      for (unsigned index = 0; index < rows; index++) {
+        for (unsigned jndex = 0; jndex < cols; jndex++) {
+          product.data[index][jndex] =
+              data[index][jndex] + m.data[index][jndex];
+        }
+      }
+      return product;
+    } else {
+      throw std::runtime_error("Incompatible matrices.");
+    }
+  }
 
   /**
    * @brief Assignment addition between two equal shaped matrices.
@@ -123,19 +137,7 @@ public:
    * @param m Matrix to be added.
    * @return Matrix& Added matrix.
    */
-  Matrix &operator+=(const Matrix &m) {
-    if (cols == m.cols && rows == m.rows) {
-      for (unsigned index = 0; index < rows; index++) {
-        for (unsigned jndex = 0; jndex < cols; jndex++) {
-          data[index][jndex] = data[index][jndex] + m.data[index][jndex];
-        }
-      }
-    } else {
-      throw std::runtime_error(
-          "Columns and/or rows does not match between instances.");
-    }
-    return *this;
-  }
+  Matrix &operator+=(const Matrix &m) { return *this = *this + m; }
 
   /**
    * @brief Matrix multiplication operator
