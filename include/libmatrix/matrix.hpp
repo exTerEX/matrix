@@ -121,8 +121,7 @@ public:
 
       for (unsigned index = 0; index < rows; index++) {
         for (unsigned jndex = 0; jndex < cols; jndex++) {
-          product.data[index][jndex] =
-              data[index][jndex] + m.data[index][jndex];
+          product.data[index][jndex] = data[index][jndex] + m.data[index][jndex];
         }
       }
       return product;
@@ -226,8 +225,7 @@ public:
     if (cols == m.rows) {
       for (unsigned i = 0; i < rows; i++) {
         for (unsigned j = 0; j < cols; j++) {
-          product(i, j) =
-              0; // TODO: Some math shit that need to be implemented...
+          product(i, j) = 0; // TODO: Some math shit that need to be implemented...
         }
       }
     } else {

@@ -1,0 +1,3 @@
+ColumnLimit: 99
+AlignTrailingComments: true
+Language: Cpp
