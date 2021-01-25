@@ -139,6 +139,35 @@ public:
   Matrix &operator+=(const Matrix &m) { return *this = *this + m; }
 
   /**
+   * @brief Subtraction between two equal shaped matrices.
+   *
+   * @param m Matrix to be subtracted.
+   * @return Matrix& Subtracted matrix.
+   */
+  Matrix operator-(const Matrix &m) {
+    if (cols == m.cols && rows == m.rows) {
+      Matrix<T> product(rows, cols);
+
+      for (unsigned index = 0; index < rows; index++) {
+        for (unsigned jndex = 0; jndex < cols; jndex++) {
+          product.data[index][jndex] = data[index][jndex] - m.data[index][jndex];
+        }
+      }
+      return product;
+    } else {
+      throw std::runtime_error("Incompatible matrices.");
+    }
+  }
+
+  /**
+   * @brief Assignment subtraction between two equal shaped matrices.
+   *
+   * @param m Matrix to be subtracted.
+   * @return Matrix& Subtracted matrix.
+   */
+  Matrix &operator-=(const Matrix &m) { return *this = *this - m; }
+
+  /**
    * @brief Matrix multiplication operator
    *
    * @param m multiplicand as a matrix object.
