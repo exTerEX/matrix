@@ -30,7 +30,7 @@
 #ifndef MATRIX_HPP
 #define MATRIX_HPP
 
-namespace libmatrix {
+namespace Matrix {
 
 template <class T = int> // (T)ype
 class Matrix {
@@ -279,5 +279,5 @@ public:
     }
   }
 };
-} // namespace libmatrix
+} // namespace Matrix
 #endif
