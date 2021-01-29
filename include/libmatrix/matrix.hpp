@@ -239,10 +239,10 @@ public:
   }
 
   Matrix transpose() {
-    Matrix product(rows, cols);
-    for (unsigned i = 0; i < cols; i++) {
-      for (unsigned j = 0; j < rows; j++) {
-        product(i, j) = this->data[j][i];
+    Matrix product(cols, rows);
+    for (unsigned index = 0; index < cols; index++) {
+      for (unsigned jndex = 0; jndex < rows; jndex++) {
+        product.data[index][jndex] = this->data[jndex][index];
       }
     }
     return product;
