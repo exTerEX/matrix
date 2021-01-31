@@ -4,8 +4,3 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    allow:
-      - dependency-name: "cmakelang"
-        dependency-type: "production"
-      - dependency-name: "sphinx"
-        dependency-type: "production"
